@@ -10,4 +10,15 @@ class UserController extends Controller
     public function index(){
         return User::all();
     }
+
+    public function store(Request $request){
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+        return response()->json([
+            'message' => 'User created successfully'
+        ], 201);
+    }
 }

@@ -10,3 +10,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/index', [UserController::class, 'index']) ;
+Route::post('/store', [UserController::class, 'store']) ;
+
+//Welcome message
+Route::get('/test', function () {
+    return response()->json([
+        'message' => 'Welcome to the API'
+    ]);
+});
