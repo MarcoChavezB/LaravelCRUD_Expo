@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Firebase\JWT\JWT;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -48,6 +50,31 @@ class UserController extends Controller
         ], 201);
     }
 
+    public function login(Request $request){
+
+        $user = User::where('email', $request->email)->first();
+
+        if(!$user){
+            return response()->json([
+                'message' => 'Usuario no encontrado'
+            ], 404);
+        }
+
+        if(! $user || !Hash::check($request->password, $user->password)){
+            return response()->json([
+                'msg' => 'Contraseña incorrecta'
+            ], 401);
+        }
+
+        $token = $user->createToken('Accesstoken')->plainTextToken;
+
+        return response()->json([
+            'msg' => 'Se ha logeado correctamente',
+            'data' => $user,
+            'jwt' => $token,
+            'token_type' => 'Bearer',
+        ]);
+    }
     public function update(Request $request, $id){
         $user = User::findOrFail($id);
         $user->name = $request->input('name', $user->name);
