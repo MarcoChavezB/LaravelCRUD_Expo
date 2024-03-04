@@ -19,8 +19,8 @@ Route::post('/login', [UserController::class, 'login']) ;
 Route::put('/update/{id}', [UserController::class, 'update']);//davidisillo mil fallas
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/indexx', [UserController::class, 'index']) ;
-
+    
+    // sus rutas authenticadas
 });
 //Welcome message
 Route::get('/test', function () {
