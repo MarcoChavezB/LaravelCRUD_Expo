@@ -4,16 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
     public function index(){
-        return response()->json([
-            'Users' => User::all()
-        ]);
+        return User::all();
     }
 
     public function store(Request $request){
