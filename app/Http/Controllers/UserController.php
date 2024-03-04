@@ -85,5 +85,11 @@ class UserController extends Controller
             'message' => 'User updated successfully'
         ], 200);
     }
-
+    public function destroy($id){
+        $user = User::findOrFail($id);
+        $user->delete();
+        return response()->json([
+            'message' => 'User deleted successfully'
+        ], 200);
+    }
 }
