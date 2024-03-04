@@ -23,4 +23,15 @@ class UserController extends Controller
             'message' => 'User created successfully'
         ], 201);
     }
+
+    public function login(Request $request){
+        
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+        return response()->json([
+            'message' => 'User created successfully'
+        ], 201);
+    }
 }
