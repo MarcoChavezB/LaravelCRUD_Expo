@@ -37,4 +37,16 @@ class UserController extends Controller
             'message' => 'User created successfully'
         ], 201);
     }
+
+    public function update(Request $request, $id){
+        $user = User::findOrFail($id);
+        $user->name = $request->input('name', $user->name);
+        $user->email = $request->input('email', $user->email);
+        $user->password = $request->input('password', $user->password);
+        $user->save();
+        return response()->json([
+            'message' => 'User updated successfully'
+        ], 200);
+    }
+    
 }
