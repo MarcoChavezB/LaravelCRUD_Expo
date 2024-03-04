@@ -17,9 +17,19 @@ class UserController extends Controller
     public function store(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'name' => 'required|min:3|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required'
+            'password' => 'required|min:8'
+        ],
+        [
+            'name.required' => 'El campo nombre es requerido',
+            'name.min' => 'El campo nombre debe tener al menos 3 caracteres',
+            'name.max' => 'El campo nombre debe tener máximo 255 caracteres',
+            'email.required' => 'El campo email es requerido',
+            'email.email' => 'El campo email debe ser un email válido',
+            'email.unique' => 'El campo email ya está en uso',
+            'password.required' => 'El campo password es requerido',
+            'password.min' => 'El campo password debe tener al menos 8 caracteres'
         ]);
 
         if ($validator->fails()) {
@@ -48,5 +58,5 @@ class UserController extends Controller
             'message' => 'User updated successfully'
         ], 200);
     }
-    
+
 }
