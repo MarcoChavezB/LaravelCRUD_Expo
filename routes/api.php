@@ -16,12 +16,12 @@ Route::any('/authenticate', function (Request $request) {
 
 Route::post('/store', [UserController::class, 'store']) ;
 Route::post('/login', [UserController::class, 'login']) ;
-Route::put('/update/{id}', [UserController::class, 'update']);//davidisillo mil fallas
-Route::delete('/delete/{id}',[UserController::class,'destroy']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/logout', [UserController::class, 'logout']);
     Route::get('/index', [UserController::class, 'index']) ;
+    Route::put('/update/{id}', [UserController::class, 'update']);//davidisillo mil fallas
+    Route::delete('/delete/{id}',[UserController::class,'destroy']);
 
 });
 //Welcome message
