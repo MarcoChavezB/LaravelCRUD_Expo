@@ -20,8 +20,7 @@ Route::put('/update/{id}', [UserController::class, 'update']);//davidisillo mil 
 Route::delete('/delete/{id}',[UserController::class,'destroy']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    
-    // sus rutas authenticadas
+ 
 });
 //Welcome message
 Route::get('/test', function () {
