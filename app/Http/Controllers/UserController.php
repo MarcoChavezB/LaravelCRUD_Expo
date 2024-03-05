@@ -89,4 +89,9 @@ class UserController extends Controller
             'message' => 'User deleted successfully'
         ], 200);
     }
+
+    public function show($id){
+        $user = User::find($id);
+        return response()->json($user);
+    }
 }

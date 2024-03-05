@@ -18,9 +18,10 @@ Route::post('/store', [UserController::class, 'store']) ;
 Route::post('/login', [UserController::class, 'login']) ;
 Route::put('/update/{id}', [UserController::class, 'update']);//davidisillo mil fallas
 Route::delete('/delete/{id}',[UserController::class,'destroy']);
+Route::get('/show/{id}',[UserController::class,'show']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
- 
+
 });
 //Welcome message
 Route::get('/test', function () {
