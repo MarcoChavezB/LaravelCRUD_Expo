@@ -72,6 +72,12 @@ class UserController extends Controller
             'token_type' => 'Bearer',
         ]);
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['status' => true]);
+    }
     public function update(Request $request, $id){
         $user = User::findOrFail($id);
         $user->name = $request->input('name', $user->name);
