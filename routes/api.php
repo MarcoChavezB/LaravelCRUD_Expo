@@ -17,11 +17,10 @@ Route::get('/index', [UserController::class, 'index']) ;
 Route::post('/store', [UserController::class, 'store']) ;
 Route::post('/login', [UserController::class, 'login']) ;
 Route::put('/update/{id}', [UserController::class, 'update']);//davidisillo mil fallas
-Route::delete('/delete',[UserController::class,'destroy']);
+Route::delete('/delete/{id}',[UserController::class,'destroy']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    
-    // sus rutas authenticadas
+ 
 });
 //Welcome message
 Route::get('/test', function () {
