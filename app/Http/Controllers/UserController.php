@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
     public function index(){
-        return User::all();
+        return response()->json([
+            "Users" => User::all()
+        ]);
     }
 
     public function store(Request $request){
