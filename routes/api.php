@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Route;
     Route::post('/login', [UserController::class, 'login']);
 
     Route::middleware(['auth:sanctum'])->group(function () {
+        Route::get('/authenticatetoken', function () {
+            return response()->json([
+                'status' => true
+            ]);
+        });
         Route::get('/logout', [UserController::class, 'logout']);
         Route::get('/index', [UserController::class, 'index']);
         Route::put('/update/{id}', [UserController::class, 'update']);//davidisillo mil fallas
